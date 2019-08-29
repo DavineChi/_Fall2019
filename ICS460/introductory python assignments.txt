@@ -1,20 +1,36 @@
-Write a program to convert Celsius to Fahrenheit temperature. The formula is: f = 9/5c+32
-The program should ask the user to enter a temperature in Celsius, and then display the temperature converted to Fahrenheit 
+========================================================================
+Write a program to convert Celsius to Fahrenheit temperature. The
+formula is: f = 9/5c+32. The program should ask the user to enter a
+temperature in Celsius, and then display the temperature converted to
+Fahrenheit.
 
-
-Design a program that asks the user to enter a series of 20 numbers. The program should store the numbers in a list and then display the following data
+========================================================================
+Design a program that asks the user to enter a series of 20 numbers. The
+program should store the numbers in a list and then display the
+following data:
 The lowest number in the list
 The highest number in the list
 The total of the numbers in the list
 The average of the numbers in the list
 
+========================================================================
+In a program write a function that accepts two arguments: a list, and a
+number ??. Assume that the list contains numbers. The function should
+display all of the numbers in the list that are greater than the number
+??.
 
-In a program write a function that accepts two arguments: a list, and a number ??. Assume that the list contains numbers. The function should display all of the numbers in the list that are greater than the number ??
-
-
+========================================================================
 Date printer
-Write a program that reads a string from the user containing a date in the form mm/dd/yyyy. It should print the date in the form month dd, yyyy
+Write a program that reads a string from the user containing a date in
+the form mm/dd/yyyy. It should print the date in the form month dd,
+yyyy.
 
-
+========================================================================
 Name and email address
-Write a program that keeps names and email addresses in a dictionary a key-value pairs. The program should display a menu that lets the user look up a person’s email address, add a new name and email address, change an existing email address and delete an existing name and email address. The program should pickle the dictionary and save it to a file when the user exists the program. Each time the program starts it should retrieve the dictionary from the file and unpickle it
+Write a program that keeps names and email addresses in a dictionary a
+key-value pairs. The program should display a menu that lets the user
+look up a person’s email address, add a new name and email address,
+change an existing email address and delete an existing name and email
+address. The program should pickle the dictionary and save it to a file
+when the user exists the program. Each time the program starts it should
+retrieve the dictionary from the file and unpickle it.
