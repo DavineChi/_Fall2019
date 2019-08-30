@@ -14,7 +14,7 @@ The average of the numbers in the list
 numbers = list()
 sum = 0.0
 
-for i in range(6):
+for i in range(20):
     num = float(input('Enter a number: '))
     numbers.append(num)
 
