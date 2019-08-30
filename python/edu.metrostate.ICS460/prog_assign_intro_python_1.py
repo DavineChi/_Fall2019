@@ -8,3 +8,12 @@ Fahrenheit.
 
 @author: Shannon Fisher
 '''
+
+celciusTemp = 0.0
+fahrenheitTemp = 0.0
+
+celciusTemp = float(eval(input('Please provide a temperature value in degrees Celcius: ')))
+
+fahrenheitTemp = (9.0 / 5.0) * celciusTemp + 32.0
+
+print('The temperature in Fahrenheit is', fahrenheitTemp, 'degrees.')
