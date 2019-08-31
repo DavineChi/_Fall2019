@@ -12,15 +12,14 @@ retrieve the dictionary from the file and unpickle it.
 
 @author: Shannon Fisher
 '''
+import os
 import pickle
+
+SAVE_FILE = "DATASTORE"
 
 class Map:
     
     list = dict()
-    
-    def __init__(self):
-        self.list["Shannon Fisher"] = "shannon.fisher@daikinapplied.com"
-        self.list["Thomas Amundson"] = "thomas.amundson@daikinapplied.com"
     
     def create(self, key, value):
         self.list[key] = value
@@ -42,6 +41,12 @@ def main():
     
     print("Welcome.")
     
+    
+    if os.path.exists(SAVE_FILE):
+        file = open(SAVE_FILE, "rb")
+        maplist.list = pickle.load(file)
+        file.close()
+    
     while not exit:
         
         print()
@@ -58,20 +63,23 @@ def main():
         selection = input(" > ")
         
         if selection == '0':
+            file = open(SAVE_FILE, "wb")
+            pickle.dump(maplist.list, file)
+            file.close()
             exit = True
             break
         
-        name = input(" > Enter a name:")
+        name = input(" > Enter a name: ")
         
         if selection == '1':
-            email_create = input("Enter an email address:")
+            email_create = input(" > Enter an email address: ")
             maplist.create(name, email_create)
         
         if selection == '2':
             print(maplist.retrieve(name))
         
         if selection == '3':
-            email_update = input("Enter an email address:")
+            email_update = input(" > Enter an email address: ")
             print(maplist.update(name, email_update))
         
         if selection == '4':
