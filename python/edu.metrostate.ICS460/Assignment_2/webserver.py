@@ -9,32 +9,39 @@ serverSocket = socket(AF_INET, SOCK_STREAM)
 #Fill in end
 
 while True:
+    
     #Establish the connection 
     print('Ready to serve...') 
-    connectionSocket, addr = #Fill in start    #Fill in end
+    connectionSocket, addr = 8080, 'http://localhost'
+    
     try:
-        message = #Fill in start    #Fill in end 
+        message = 'HelloWorld'
         filename = message.split()[1]
         f = open(filename[1:])
-        outputdata = #Fill in start    #Fill in end 
+        outputdata = ""#Fill in start    #Fill in end 
         #Send one HTTP header line into socket
         
         #Fill in start
+        headers = {}
+        headers['Content-Type'] = 'text/html'
         #Fill in end
         
         #Send the content of the requested file to the client 
         for i in range(0, len(outputdata)):
-            connectionSocket.send(outputdata[i].encode()) 
+            connectionSocket.send(outputdata[i].encode())
+        
         connectionSocket.send("\r\n".encode())
         connectionSocket.close() 
         
     except IOError:
+        
         #Send response message for file not found
         #Fill in start
         #Fill in end
         
         #Close client socket
         #Fill in start
+        serverSocket.close()
         #Fill in end
         
 serverSocket.close()
