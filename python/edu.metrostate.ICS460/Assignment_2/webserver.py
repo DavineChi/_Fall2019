@@ -2,23 +2,24 @@
 from socket import *
 import sys # In order to terminate the program
 
+serverPort = 12000
 serverSocket = socket(AF_INET, SOCK_STREAM) 
 
-#Prepare a sever socket
-#Fill in start
-#Fill in end
+#Prepare a server socket
+serverSocket.bind(('', serverPort))
+serverSocket.listen(1)
 
 while True:
     
     #Establish the connection 
     print('Ready to serve...') 
-    connectionSocket, addr = 8080, 'http://localhost'
+    connectionSocket, addr = serverSocket.accept()
     
     try:
-        message = 'HelloWorld'
+        message = 'http://localhost' + serverPort
         filename = message.split()[1]
         f = open(filename[1:])
-        outputdata = ""#Fill in start    #Fill in end 
+        outputdata = 'Hello World!'
         #Send one HTTP header line into socket
         
         #Fill in start
