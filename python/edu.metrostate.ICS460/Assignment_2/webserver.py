@@ -2,11 +2,11 @@
 from socket import *
 import sys # In order to terminate the program
 
-serverPort = 12000
-serverSocket = socket(AF_INET, SOCK_STREAM) 
+serverPort = 7777
+serverSocket = socket(AF_INET, SOCK_STREAM)
 
 #Prepare a server socket
-serverSocket.bind(('', serverPort))
+serverSocket.bind(('localhost', serverPort))
 serverSocket.listen(1)
 
 while True:
@@ -16,34 +16,30 @@ while True:
     connectionSocket, addr = serverSocket.accept()
     
     try:
-        message = 'http://localhost' + serverPort
+        message = connectionSocket.recv(2048)
         filename = message.split()[1]
         f = open(filename[1:])
-        outputdata = 'Hello World!'
-        #Send one HTTP header line into socket
+        outputdata = f.read()
         
-        #Fill in start
-        headers = {}
-        headers['Content-Type'] = 'text/html'
-        #Fill in end
+        #Send one HTTP header line into socket
+        successResponse = 'HTTP/1.1 200 OK\nContent-Type: text/html\n\n'
+        connectionSocket.send(successResponse.encode())
         
         #Send the content of the requested file to the client 
         for i in range(0, len(outputdata)):
             connectionSocket.send(outputdata[i].encode())
         
         connectionSocket.send("\r\n".encode())
-        connectionSocket.close() 
+        connectionSocket.close()
         
     except IOError:
         
         #Send response message for file not found
-        #Fill in start
-        #Fill in end
+        failureResponse = 'HTTP/1.1 404 Not Found\nContent-Type: text/html\n\n'
+        connectionSocket.send(failureResponse.encode())
         
         #Close client socket
-        #Fill in start
-        serverSocket.close()
-        #Fill in end
+        connectionSocket.close()
         
 serverSocket.close()
 sys.exit() #Terminate the program after sending the corresponding data
