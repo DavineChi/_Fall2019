@@ -12,7 +12,7 @@ def checksum(string):
 	csum = 0
 	countTo = (len(string) // 2) * 2  
 	count = 0
-
+	
 	while count < countTo:
 		thisVal = ord(string[count+1]) * 256 + ord(string[count]) 
 		csum = csum + thisVal 
@@ -28,8 +28,8 @@ def checksum(string):
 	answer = ~csum 
 	answer = answer & 0xffff 
 	answer = answer >> 8 | (answer << 8 & 0xff00)
-	return answer 
-	
+	return answer
+
 def receiveOnePing(mySocket, ID, timeout, destAddr):
 	timeLeft = timeout
 	
@@ -53,7 +53,6 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
 		if timeLeft <= 0:
 			return "Request timed out."
 
-	
 def sendOnePing(mySocket, destAddr, ID):
 	# Header is type (8), code (8), checksum (16), id (16), sequence (16)
 	
@@ -79,7 +78,7 @@ def sendOnePing(mySocket, destAddr, ID):
 	mySocket.sendto(packet, (destAddr, 1)) # AF_INET address must be tuple, not str
 	# Both LISTS and TUPLES consist of a number of objects
 	# which can be referenced by their position number within the object.
-	
+
 def doOnePing(destAddr, timeout): 
 	icmp = getprotobyname("icmp")
 
@@ -92,7 +91,7 @@ def doOnePing(destAddr, timeout):
 	
 	mySocket.close()
 	return delay
-	
+
 def ping(host, timeout=1):
 	# timeout=1 means: If one second goes by without a reply from the server,
 	# the client assumes that either the client's ping or the server's pong is lost
@@ -105,6 +104,5 @@ def ping(host, timeout=1):
 		print(delay)
 		time.sleep(1)# one second
 	return delay
-	
-ping("google.com")
 
+ping("google.com")
