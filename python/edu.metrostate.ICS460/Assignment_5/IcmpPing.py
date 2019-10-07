@@ -68,7 +68,7 @@ def sendOnePing(mySocket, destAddr, ID):
 	# Get the right checksum, and put in the header
 	if sys.platform == 'darwin':
 		# Convert 16-bit integers from host to network byte order
-		myChecksum = htons(myChecksum) & 0xffff		
+		myChecksum = htons(myChecksum) & 0xffff	
 	else:
 		myChecksum = htons(myChecksum)
 		
@@ -85,7 +85,7 @@ def doOnePing(destAddr, timeout):
 	# SOCK_RAW is a powerful socket type. For more details:   http://sock-raw.org/papers/sock_raw
 	mySocket = socket(AF_INET, SOCK_RAW, icmp)
 	
-	myID = os.getpid() & 0xFFFF  # Return the current process i
+	myID = os.getpid() & 0xFFFF  # Return the current process id
 	sendOnePing(mySocket, destAddr, myID)
 	delay = receiveOnePing(mySocket, myID, timeout, destAddr)
 	
@@ -99,10 +99,11 @@ def ping(host, timeout=1):
 	print("Pinging " + dest + " using Python:")
 	print("")
 	# Send ping requests to a server separated by approximately one second
-	while True :  
+	while True:
 		delay = doOnePing(dest, timeout)
 		print(delay)
 		time.sleep(1)# one second
 	return delay
 
-ping("google.com")
+#ping("google.com")
+ping("127.0.0.1")
