@@ -30,6 +30,7 @@ public class WebLogCount {
 	    
 	    // Set the Partitioner class.
 	    job.setPartitionerClass(WebLogPartitioner.class);
+	    job.setNumReduceTasks(12);
 	    
 	    System.exit(job.waitForCompletion(true) ? 0 : 1);
 	}
