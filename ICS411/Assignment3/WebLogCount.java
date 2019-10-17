@@ -5,7 +5,6 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-
 public class WebLogCount {
 
 	public static void main(String[] args) throws Exception {
@@ -18,13 +17,19 @@ public class WebLogCount {
 	    FileInputFormat.addInputPath(job, new Path(args[0]));
 	    FileOutputFormat.setOutputPath(job, new Path(args[1]));
 	    
-	    //setting the class names
+	    // Set the Mapper and Reducer classes.
 	    job.setMapperClass(WebLogMapper.class);
 	    job.setReducerClass(WebLogReducer.class);
 	    
-	    //setting the output data type classes
+	    // Set the output data type classes (K/V).
 	    job.setOutputKeyClass(Text.class);
 	    job.setOutputValueClass(IntWritable.class);
+	    
+	    // Set the Combiner class (can reuse the Reducer class).
+	    job.setCombinerClass(WebLogReducer.class);
+	    
+	    // Set the Partitioner class.
+	    job.setPartitionerClass(WebLogPartitioner.class);
 	    
 	    System.exit(job.waitForCompletion(true) ? 0 : 1);
 	}
