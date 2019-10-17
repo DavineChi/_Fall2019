@@ -10,16 +10,34 @@ public class WebLogMapper extends Mapper<LongWritable, Text, Text, IntWritable> 
 	private final static IntWritable one = new IntWritable(1);
 	private Text word = new Text();
 	
+	public static enum ImageCounter { GIF, JPEG, Others };
+	
 	@Override
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 		
 		String line = value.toString();
 		String[] array = line.split(" ");
-		String item = array[0];
+		String ipAddress = array[0];
+		String resourceUrl = array[6].toUpperCase();
 		
-		if (!item.equals("")) {
+		if (!ipAddress.equals("")) {
 			
-			word.set(item);
+			if (resourceUrl.contains("GIF")) {
+				
+				context.getCounter(ImageCounter.GIF).increment(1);
+			}
+			
+			else if (resourceUrl.contains("JPG") || resourceUrl.contains("JPEG")) {
+				
+				context.getCounter(ImageCounter.JPEG).increment(1);
+			}
+			
+			else {
+				
+				context.getCounter(ImageCounter.Others).increment(1);
+			}
+			
+			word.set(ipAddress);
 			context.write(word, one);
 		}
 	}
