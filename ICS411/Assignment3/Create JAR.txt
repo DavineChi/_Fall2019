@@ -1,0 +1,1 @@
+jar -cvf weblogcount.jar -C bin .

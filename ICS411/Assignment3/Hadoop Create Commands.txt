@@ -1,0 +1,4 @@
+hadoop fs -mkdir /user/fisher
+hadoop fs -mkdir /user/fisher/weblogcount
+hadoop fs -mkdir /user/fisher/weblogcount/input
+hadoop fs -copyFromLocal weblog /user/fisher/weblogcount/input
