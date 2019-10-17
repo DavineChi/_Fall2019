@@ -48,13 +48,15 @@ public class Driver {
 		
 		File inputFile = Driver.getFile(".", "weblogs_small");
 		
-		String test01 = "10.223.157.186 - - [15/Jul/2009:14:58:59 -0700] \"GET / HTTP/1.1\" 403 202";
-		String test02 = "10.216.113.172 - - [16/Nov/2009:07:26:38 -0800] \"GET /images/filmpics/0000/0173/SNDN3.jpeg HTTP/1.1\" 304 -";
-		String[] splitLine01 = test02.split(" ");
+//		String test01 = "10.223.157.186 - - [15/Jul/2009:14:58:59 -0700] \"GET / HTTP/1.1\" 403 202";
+//		String test02 = "10.216.113.172 - - [16/Nov/2009:07:26:38 -0800] \"GET /images/filmpics/0000/0173/SNDN3.jpeg HTTP/1.1\" 304 -";
+//		String[] splitLine01 = test02.split(" ");
 		
 		String nextLine;
 		String ipAddress;
 		String resource;
+		
+		int counter = 0;
 		
 		try {
 			
@@ -64,13 +66,23 @@ public class Driver {
 				
 				nextLine = input.nextLine();
 				
-				String[] split = nextLine.split(" ");
-				
-				ipAddress = splitLine01[0];
-				resource = splitLine01[6].toUpperCase();
-				
-				System.out.println("ipAddress = " + ipAddress);
-				System.out.println("resource  = " + resource);
+				if (!nextLine.equals("")) {
+					
+					String[] split = nextLine.split(" ");
+					
+					if (counter == 40206) {
+						
+						String stop = "";
+					}
+					
+					ipAddress = split[0];
+					resource = split[6].toUpperCase();
+					
+					System.out.println("ipAddress = " + ipAddress);
+					System.out.println("resource  = " + resource);
+					
+					counter++;
+				}
 			}
 		}
 		
