@@ -5,6 +5,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+
 public class WebLogCount {
 
 	public static void main(String[] args) throws Exception {
@@ -17,20 +18,22 @@ public class WebLogCount {
 	    FileInputFormat.addInputPath(job, new Path(args[0]));
 	    FileOutputFormat.setOutputPath(job, new Path(args[1]));
 	    
-	    // Set the Mapper and Reducer classes.
+	    //setting the class names
 	    job.setMapperClass(WebLogMapper.class);
 	    job.setReducerClass(WebLogReducer.class);
 	    
-	    // Set the output data type classes (K/V).
+	    //setting the output data type classes
 	    job.setOutputKeyClass(Text.class);
 	    job.setOutputValueClass(IntWritable.class);
 	    
-	    // Set the Combiner class (can reuse the Reducer class).
-	    job.setCombinerClass(WebLogReducer.class);
+	    // Retrieve the counter values.
+	    long gifCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.GIF).getValue();
+	    long jpgCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.JPEG).getValue();
+	    long othCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.Others).getValue();
 	    
-	    // Set the Partitioner class.
-	    job.setPartitionerClass(WebLogPartitioner.class);
-	    job.setNumReduceTasks(12);
+	    System.out.println("# of gif requests found:   " + gifCounter);
+	    System.out.println("# of jpg requests found:   " + jpgCounter);
+	    System.out.println("# of other requests found: " + othCounter);
 	    
 	    System.exit(job.waitForCompletion(true) ? 0 : 1);
 	}
