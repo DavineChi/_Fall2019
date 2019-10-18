@@ -1,18 +1,18 @@
 [cloudera@quickstart WebLogProject]$ ./run.sh
-19/10/05 16:36:27 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
-19/10/05 16:36:28 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
-19/10/05 16:36:28 INFO input.FileInputFormat: Total input paths to process : 1
-19/10/05 16:36:28 INFO mapreduce.JobSubmitter: number of splits:1
-19/10/05 16:36:28 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1566768522274_0003
-19/10/05 16:36:28 INFO impl.YarnClientImpl: Submitted application application_1566768522274_0003
-19/10/05 16:36:28 INFO mapreduce.Job: The url to track the job: http://quickstart.cloudera:8088/proxy/application_1566768522274_0003/
-19/10/05 16:36:28 INFO mapreduce.Job: Running job: job_1566768522274_0003
-19/10/05 16:36:33 INFO mapreduce.Job: Job job_1566768522274_0003 running in uber mode : false
-19/10/05 16:36:33 INFO mapreduce.Job:  map 0% reduce 0%
-19/10/05 16:36:38 INFO mapreduce.Job:  map 100% reduce 0%
-19/10/05 16:36:44 INFO mapreduce.Job:  map 100% reduce 100%
-19/10/05 16:36:44 INFO mapreduce.Job: Job job_1566768522274_0003 completed successfully
-19/10/05 16:36:45 INFO mapreduce.Job: Counters: 49
+19/10/18 15:59:59 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+19/10/18 15:59:59 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+19/10/18 16:00:00 INFO input.FileInputFormat: Total input paths to process : 1
+19/10/18 16:00:00 INFO mapreduce.JobSubmitter: number of splits:1
+19/10/18 16:00:00 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1566768522274_0024
+19/10/18 16:00:01 INFO impl.YarnClientImpl: Submitted application application_1566768522274_0024
+19/10/18 16:00:01 INFO mapreduce.Job: The url to track the job: http://quickstart.cloudera:8088/proxy/application_1566768522274_0024/
+19/10/18 16:00:01 INFO mapreduce.Job: Running job: job_1566768522274_0024
+19/10/18 16:00:08 INFO mapreduce.Job: Job job_1566768522274_0024 running in uber mode : false
+19/10/18 16:00:08 INFO mapreduce.Job:  map 0% reduce 0%
+19/10/18 16:00:22 INFO mapreduce.Job:  map 100% reduce 0%
+19/10/18 16:00:29 INFO mapreduce.Job:  map 100% reduce 100%
+19/10/18 16:00:29 INFO mapreduce.Job: Job job_1566768522274_0024 completed successfully
+19/10/18 16:00:29 INFO mapreduce.Job: Counters: 49
 	File System Counters
 		FILE: Number of bytes read=404720
 		FILE: Number of bytes written=1095817
@@ -28,14 +28,14 @@
 		Launched map tasks=1
 		Launched reduce tasks=1
 		Data-local map tasks=1
-		Total time spent by all maps in occupied slots (ms)=3078
-		Total time spent by all reduces in occupied slots (ms)=2522
-		Total time spent by all map tasks (ms)=3078
-		Total time spent by all reduce tasks (ms)=2522
-		Total vcore-milliseconds taken by all map tasks=3078
-		Total vcore-milliseconds taken by all reduce tasks=2522
-		Total megabyte-milliseconds taken by all map tasks=3151872
-		Total megabyte-milliseconds taken by all reduce tasks=2582528
+		Total time spent by all maps in occupied slots (ms)=10763
+		Total time spent by all reduces in occupied slots (ms)=4708
+		Total time spent by all map tasks (ms)=10763
+		Total time spent by all reduce tasks (ms)=4708
+		Total vcore-milliseconds taken by all map tasks=10763
+		Total vcore-milliseconds taken by all reduce tasks=4708
+		Total megabyte-milliseconds taken by all map tasks=11021312
+		Total megabyte-milliseconds taken by all reduce tasks=4820992
 	Map-Reduce Framework
 		Map input records=20104
 		Map output records=20103
@@ -52,11 +52,11 @@
 		Shuffled Maps =1
 		Failed Shuffles=0
 		Merged Map outputs=1
-		GC time elapsed (ms)=588
-		CPU time spent (ms)=3380
-		Physical memory (bytes) snapshot=641294336
-		Virtual memory (bytes) snapshot=3156758528
-		Total committed heap usage (bytes)=554696704
+		GC time elapsed (ms)=129
+		CPU time spent (ms)=2710
+		Physical memory (bytes) snapshot=462811136
+		Virtual memory (bytes) snapshot=3158167552
+		Total committed heap usage (bytes)=362283008
 	Shuffle Errors
 		BAD_ID=0
 		CONNECTION=0
@@ -68,3 +68,4 @@
 		Bytes Read=2165796
 	File Output Format Counters 
 		Bytes Written=20779
+[cloudera@quickstart WebLogProject]$ 
