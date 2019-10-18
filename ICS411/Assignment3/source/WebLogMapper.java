@@ -18,16 +18,18 @@ public class WebLogMapper extends Mapper<LongWritable, Text, Text, IntWritable> 
 		String line = value.toString();
 		String[] array = line.split(" ");
 		String ipAddress = array[0];
-		String resourceUrl = array[6].toUpperCase();
 		
 		if (!ipAddress.equals("")) {
 			
-			if (resourceUrl.contains("GIF")) {
+			word.set(ipAddress);
+			context.write(word, one);
+			
+			if (line.contains("GIF")) {
 				
 				context.getCounter(ImageCounter.GIF).increment(1);
 			}
 			
-			else if (resourceUrl.contains("JPG") || resourceUrl.contains("JPEG")) {
+			else if (line.contains("JPG") || line.contains("JPEG")) {
 				
 				context.getCounter(ImageCounter.JPEG).increment(1);
 			}
@@ -36,9 +38,6 @@ public class WebLogMapper extends Mapper<LongWritable, Text, Text, IntWritable> 
 				
 				context.getCounter(ImageCounter.Others).increment(1);
 			}
-			
-			word.set(ipAddress);
-			context.write(word, one);
 		}
 	}
 }
