@@ -28,16 +28,20 @@ public class WebLogCount {
 	    // Set the Combiner class (reuse the existing Reducer class).
 	    job.setCombinerClass(WebLogReducer.class);
 	    
+	    // Set the Partitioner class and number of reduce tasks.
+	    job.setPartitionerClass(WebLogPartitioner.class);
+	    job.setNumReduceTasks(12);
+	    
 	    int code = (job.waitForCompletion(true) ? 0 : 1);
 	    
 	    // Retrieve the counter values.
-//	    long gifCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.GIF).getValue();
-//	    long jpgCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.JPEG).getValue();
-//	    long othCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.Others).getValue();
-//	    
-//	    System.out.println("# of gif requests found:   " + gifCounter);
-//	    System.out.println("# of jpg requests found:   " + jpgCounter);
-//	    System.out.println("# of other requests found: " + othCounter);
+	    long gifCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.GIF).getValue();
+	    long jpgCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.JPEG).getValue();
+	    long othCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.Others).getValue();
+	    
+	    System.out.println("# of gif requests found:   " + gifCounter);
+	    System.out.println("# of jpg requests found:   " + jpgCounter);
+	    System.out.println("# of other requests found: " + othCounter);
 	    
 	    System.exit(code);
 	}
