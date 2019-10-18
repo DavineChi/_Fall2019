@@ -17,24 +17,27 @@ public class WebLogCount {
 	    FileInputFormat.addInputPath(job, new Path(args[0]));
 	    FileOutputFormat.setOutputPath(job, new Path(args[1]));
 	    
-	    //setting the class names
+	    // Set the Mapper and Reducer classes.
 	    job.setMapperClass(WebLogMapper.class);
 	    job.setReducerClass(WebLogReducer.class);
 	    
-	    //setting the output data type classes
+	    // Set the output data type classes (K/V pairs).
 	    job.setOutputKeyClass(Text.class);
 	    job.setOutputValueClass(IntWritable.class);
+	    
+	    // Set the Combiner class (reuse the existing Reducer class).
+	    job.setCombinerClass(WebLogReducer.class);
 	    
 	    int code = (job.waitForCompletion(true) ? 0 : 1);
 	    
 	    // Retrieve the counter values.
-	    long gifCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.GIF).getValue();
-	    long jpgCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.JPEG).getValue();
-	    long othCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.Others).getValue();
-	    
-	    System.out.println("# of gif requests found:   " + gifCounter);
-	    System.out.println("# of jpg requests found:   " + jpgCounter);
-	    System.out.println("# of other requests found: " + othCounter);
+//	    long gifCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.GIF).getValue();
+//	    long jpgCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.JPEG).getValue();
+//	    long othCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.Others).getValue();
+//	    
+//	    System.out.println("# of gif requests found:   " + gifCounter);
+//	    System.out.println("# of jpg requests found:   " + jpgCounter);
+//	    System.out.println("# of other requests found: " + othCounter);
 	    
 	    System.exit(code);
 	}
