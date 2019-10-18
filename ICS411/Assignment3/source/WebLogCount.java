@@ -5,9 +5,8 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-
 public class WebLogCount {
-
+	
 	public static void main(String[] args) throws Exception {
 		
 		Job job = new Job();
@@ -26,6 +25,8 @@ public class WebLogCount {
 	    job.setOutputKeyClass(Text.class);
 	    job.setOutputValueClass(IntWritable.class);
 	    
+	    int code = (job.waitForCompletion(true) ? 0 : 1);
+	    
 	    // Retrieve the counter values.
 	    long gifCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.GIF).getValue();
 	    long jpgCounter = job.getCounters().findCounter(WebLogMapper.ImageCounter.JPEG).getValue();
@@ -35,6 +36,6 @@ public class WebLogCount {
 	    System.out.println("# of jpg requests found:   " + jpgCounter);
 	    System.out.println("# of other requests found: " + othCounter);
 	    
-	    System.exit(job.waitForCompletion(true) ? 0 : 1);
+	    System.exit(code);
 	}
 }
