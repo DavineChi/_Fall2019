@@ -1,3 +1,4 @@
+[cloudera@quickstart WebLogProject]$ ./run.sh
 19/10/05 16:36:27 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
 19/10/05 16:36:28 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
 19/10/05 16:36:28 INFO input.FileInputFormat: Total input paths to process : 1
