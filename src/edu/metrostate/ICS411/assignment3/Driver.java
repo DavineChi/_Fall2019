@@ -52,6 +52,12 @@ public class Driver {
 //		String test02 = "10.216.113.172 - - [16/Nov/2009:07:26:38 -0800] \"GET /images/filmpics/0000/0173/SNDN3.jpeg HTTP/1.1\" 304 -";
 //		String[] splitLine01 = test02.split(" ");
 		
+		String test = "10.216.113.172 - - [01/Dec/2009:05:28:33 -0800] \"GET /assets/img/banner/ten-years-banner-white.jpg HTTP/1.1\" 304 -";
+		
+		String[] array = test.split(" ");
+		
+		String resourceUrl = array[6].toUpperCase();
+		
 		String nextLine;
 		String ipAddress;
 		String resource;
