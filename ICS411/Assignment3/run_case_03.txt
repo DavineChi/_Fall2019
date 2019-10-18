@@ -1,0 +1,78 @@
+[cloudera@quickstart WebLogProject]$ ./run.sh
+19/10/18 16:19:01 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+19/10/18 16:19:01 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+19/10/18 16:19:02 INFO input.FileInputFormat: Total input paths to process : 1
+19/10/18 16:19:02 INFO mapreduce.JobSubmitter: number of splits:1
+19/10/18 16:19:02 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1566768522274_0026
+19/10/18 16:19:02 INFO impl.YarnClientImpl: Submitted application application_1566768522274_0026
+19/10/18 16:19:02 INFO mapreduce.Job: The url to track the job: http://quickstart.cloudera:8088/proxy/application_1566768522274_0026/
+19/10/18 16:19:02 INFO mapreduce.Job: Running job: job_1566768522274_0026
+19/10/18 16:19:07 INFO mapreduce.Job: Job job_1566768522274_0026 running in uber mode : false
+19/10/18 16:19:07 INFO mapreduce.Job:  map 0% reduce 0%
+19/10/18 16:19:12 INFO mapreduce.Job:  map 100% reduce 0%
+19/10/18 16:19:19 INFO mapreduce.Job:  map 100% reduce 100%
+19/10/18 16:19:19 INFO mapreduce.Job: Job job_1566768522274_0026 completed successfully
+19/10/18 16:19:19 INFO mapreduce.Job: Counters: 52
+	File System Counters
+		FILE: Number of bytes read=25814
+		FILE: Number of bytes written=338337
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=2165943
+		HDFS: Number of bytes written=20779
+		HDFS: Number of read operations=6
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=3045
+		Total time spent by all reduces in occupied slots (ms)=2562
+		Total time spent by all map tasks (ms)=3045
+		Total time spent by all reduce tasks (ms)=2562
+		Total vcore-milliseconds taken by all map tasks=3045
+		Total vcore-milliseconds taken by all reduce tasks=2562
+		Total megabyte-milliseconds taken by all map tasks=3118080
+		Total megabyte-milliseconds taken by all reduce tasks=2623488
+	Map-Reduce Framework
+		Map input records=20104
+		Map output records=20103
+		Map output bytes=364508
+		Map output materialized bytes=25814
+		Input split bytes=147
+		Combine input records=20103
+		Combine output records=1309
+		Reduce input groups=1309
+		Reduce shuffle bytes=25814
+		Reduce input records=1309
+		Reduce output records=1309
+		Spilled Records=2618
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=701
+		CPU time spent (ms)=3470
+		Physical memory (bytes) snapshot=653783040
+		Virtual memory (bytes) snapshot=3149840384
+		Total committed heap usage (bytes)=555745280
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	WebLogMapper$ImageCounter
+		GIF=1079
+		JPEG=9668
+		Others=9356
+	File Input Format Counters 
+		Bytes Read=2165796
+	File Output Format Counters 
+		Bytes Written=20779
+# of gif requests found:   1079
+# of jpg requests found:   9668
+# of other requests found: 9356
+[cloudera@quickstart WebLogProject]$ 
