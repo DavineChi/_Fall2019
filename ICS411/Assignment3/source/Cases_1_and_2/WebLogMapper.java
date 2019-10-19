@@ -15,13 +15,13 @@ public class WebLogMapper extends Mapper<LongWritable, Text, Text, IntWritable> 
 	@Override
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 		
-		String line = value.toString();
+		String line = value.toString().toUpperCase();
 		String[] array = line.split(" ");
 		String ipAddress = array[0];
 		
 		if (!ipAddress.equals("")) {
 			
-			word.set(ipAddress);
+			word.set(line);
 			context.write(word, one);
 			
 			if (line.contains("GIF")) {

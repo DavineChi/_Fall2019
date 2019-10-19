@@ -30,7 +30,7 @@ public class WebLogCount {
 	    
 	    // Set the Partitioner class and number of reduce tasks.
 	    job.setPartitionerClass(WebLogPartitioner.class);
-	    job.setNumReduceTasks(13); // Extra reduce task for Default = 0
+	    job.setNumReduceTasks(12);
 	    
 	    int code = (job.waitForCompletion(true) ? 0 : 1);
 	    
