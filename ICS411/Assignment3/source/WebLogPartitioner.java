@@ -7,9 +7,11 @@ public class WebLogPartitioner extends Partitioner<Text, IntWritable> {
 	@Override
 	public int getPartition(Text key, IntWritable value, int numReduceTasks) {
 		
+		String line = key.toString().toUpperCase();
+		String[] array = line.split(" ");
+		String date = array[3];
+		
 		Integer reducerNumber = 0;
-		String[] array = key.toString().toUpperCase().split(" ");
-		String date = array[0];
 		
 		if (date.contains("JAN")) {
 			
