@@ -29,7 +29,7 @@ while 1:
     filename = message.split()[1].partition("/")[2] + ".cache"
     print(filename)
     fileExist = False
-    fileToUse = "/" + filename
+    fileToUse = filename
     print("File to use: " + fileToUse)
     
     try:
@@ -69,7 +69,7 @@ while 1:
                 
                 # Create a temporary file on this socket and ask port 80 for the file requested by the client.
                 fileObject = proxySocket.makefile('r', 0)
-                fileObject.write("GET " + "http://www." + hostn + "HTTP/1.0\n\n")
+                fileObject.write("GET " + "http://www." + hostn + "/ HTTP/1.0\n\n")
                 
                 # Read the response into buffer.
                 # Fill in start.
@@ -77,8 +77,7 @@ while 1:
                 # Fill in end.
                 
                 # Create a new file in the cache for the requested file.
-                # Also send the response in the buffer to client socket
-                # and the corresponding file in the cache.
+                # Also send the response in the buffer to client socket and the corresponding file in the cache.
                 tempFile = open("./" + filename, "wb")
                 
                 # Fill in start.
