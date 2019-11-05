@@ -10,6 +10,9 @@ sys.exit(2)
 tcpSerSock = socket(AF_INET, SOCK_STREAM)
 
 # Fill in start.
+serverPort = 7001
+serverSocket.bind(('localhost', serverPort))
+serverSocket.listen(1)
 # Fill in end.
 
 while 1:
@@ -47,7 +50,7 @@ while 1:
 
         if fileExist == "false":
             # Create a socket on the proxyserver
-            c = # Fill in start. # Fill in end.
+            c = socket(AF_INET, SOCK_STREAM) # Fill in start. # Fill in end.
             hostn = filename.replace("www.","",1)
             print(hostn)
             
@@ -67,7 +70,7 @@ while 1:
 
                 # Create a new file in the cache for the requested file.
                 # Also send the response in the buffer to client socket
-                and the corresponding file in the cache
+                # and the corresponding file in the cache
                 tmpFile = open("./" + filename,"wb")
 
                 # Fill in start.
@@ -79,8 +82,10 @@ while 1:
         else:
             # HTTP response message for file not found
             # Fill in start.
+            tcpCliSock.send("HTTP/1.1 404 Not Found\r\n")
+            tcpCliSock.send("Content-Type: text/html\r\n")
             # Fill in end.
-
+            
     # Close the client and the server sockets
     tcpCliSock.close()
     
