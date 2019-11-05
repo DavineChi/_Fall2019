@@ -17,7 +17,7 @@ while 1:
     print('Ready to serve...')
     tcpCliSock, addr = tcpSerSock.accept()
     print('Received a connection from:', addr)
-    message = # Fill in start. # Fill in end.
+    message = tcpCliSock.recv(1024) # Fill in start. # Fill in end.
     print(message)
     
     # Extract the filename from the given message
@@ -29,7 +29,7 @@ while 1:
     print(filetouse)
     
     try:
-        # Check wether the file exist in the cache
+        # Check whether the file exist in the cache
         f = open(filetouse[1:], "r")
         outputdata = f.readlines()
         fileExist = "true"
