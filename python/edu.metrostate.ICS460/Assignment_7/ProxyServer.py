@@ -2,17 +2,16 @@ from socket import *
 import sys
 
 if len(sys.argv) <= 1:
-    print('Usage : "python ProxyServer.py server_ip"\n[server_ip : It is the IP Address Of Proxy Server')
-
-sys.exit(2)
+    print('Usage : "python ProxyServer.py server_ip"\n[server_ip] : The IP Address Of Proxy Server')
+    sys.exit(2)
 
 # Create a server socket, bind it to a port and start listening
 tcpSerSock = socket(AF_INET, SOCK_STREAM)
 
 # Fill in start.
 serverPort = 7001
-serverSocket.bind(('localhost', serverPort))
-serverSocket.listen(1)
+tcpSerSock.bind((sys.argv[1], serverPort))
+tcpSerSock.listen(1)
 # Fill in end.
 
 while 1:
@@ -28,12 +27,12 @@ while 1:
     filename = message.split()[1].partition("/")[2]
     print(filename)
     fileExist = "false"
-    filetouse = "/" + filename
-    print(filetouse)
+    fileToUse = "/" + filename
+    print(fileToUse)
     
     try:
         # Check whether the file exist in the cache
-        f = open(filetouse[1:], "r")
+        f = open(fileToUse[1:], "r")
         outputdata = f.readlines()
         fileExist = "true"
         # ProxyServer finds a cache hit and generates a response message
