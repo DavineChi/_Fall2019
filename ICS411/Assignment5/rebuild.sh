@@ -1,4 +1,4 @@
 hadoop fs -rm -R /user/fisher/Assign5/output
-rm Assign5.jar
-jar -cvf Assign5.jar -C bin .
-chmod 777 Assign5.jar
+rm assignment5jobs.jar
+jar -cvf assignment5jobs.jar -C bin .
+chmod 777 assignment5jobs.jar

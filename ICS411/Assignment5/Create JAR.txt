@@ -1,1 +1,1 @@
-jar -cvf Assign5.jar -C bin .
+jar -cvf assignment5jobs.jar -C bin .
