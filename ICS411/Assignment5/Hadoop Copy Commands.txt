@@ -1,0 +1,5 @@
+Copy to Hadoop:
+hadoop fs -copyFromLocal /home/cloudera/Assign5/data/*.txt /user/fisher/Assign5/input
+
+Copy from Hadoop:
+hadoop fs -copyToLocal /user/fisher/Assign5/output/part-r-00000 part-r-00000

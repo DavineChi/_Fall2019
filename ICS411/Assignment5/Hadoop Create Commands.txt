@@ -1,0 +1,4 @@
+hadoop fs -mkdir /user/fisher
+hadoop fs -mkdir /user/fisher/Assign5
+hadoop fs -mkdir /user/fisher/Assign5/input
+hadoop fs -copyFromLocal /home/cloudera/Assign5/data/*.txt /user/fisher/Assign5/input

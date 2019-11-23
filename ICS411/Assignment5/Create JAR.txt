@@ -1,0 +1,1 @@
+jar -cvf Assign5.jar -C bin .
