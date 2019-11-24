@@ -1,8 +1,7 @@
 package edu.metrostate.ICS411.assignment3;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Driver {
 	
@@ -46,55 +45,26 @@ public class Driver {
 	
 	public static void main(String[] args) {
 		
-		File inputFile = Driver.getFile(".", "weblogs_small");
-		
 //		String test01 = "10.223.157.186 - - [15/Jul/2009:14:58:59 -0700] \"GET / HTTP/1.1\" 403 202";
 //		String test02 = "10.216.113.172 - - [16/Nov/2009:07:26:38 -0800] \"GET /images/filmpics/0000/0173/SNDN3.jpeg HTTP/1.1\" 304 -";
 //		String[] splitLine01 = test02.split(" ");
 		
-		String test = "10.216.113.172 - - [01/Dec/2009:05:28:33 -0800] \"GET /assets/img/banner/ten-years-banner-white.jpg HTTP/1.1\" 304 -";
+		String customerLine = "1000000	Quentin	Shepard	32092 West 10th Street	Prairie City	SD	57649";
+		String orderLine = "5000001	1133938	1273719	2008-06-01 00:03:35.0";
 		
-		String[] array = test.split(" ");
+		StringTokenizer tokenizer = new StringTokenizer(customerLine);
 		
-		String resourceUrl = array[6].toUpperCase();
+		String[] customerVals = customerLine.split("\t");
+		String[] orderVals = orderLine.split("\t");
 		
-		String nextLine;
-		String ipAddress;
-		String resource;
+		int cSize = customerVals.length;
+		int oSize = orderVals.length;
 		
-		int counter = 0;
-		
-		try {
+		while (tokenizer.hasMoreTokens()) {
 			
-			Scanner input = new Scanner(inputFile);
-			
-			while (input.hasNextLine()) {
-				
-				nextLine = input.nextLine();
-				
-				if (!nextLine.equals("")) {
-					
-					String[] split = nextLine.split(" ");
-					
-					if (counter == 40206) {
-						
-						String stop = "";
-					}
-					
-					ipAddress = split[0];
-					resource = split[6].toUpperCase();
-					
-					System.out.println("ipAddress = " + ipAddress);
-					System.out.println("resource  = " + resource);
-					
-					counter++;
-				}
-			}
-		}
-		
-		catch (FileNotFoundException ex) {
-			
-			ex.printStackTrace();
+			String result = tokenizer.nextToken();
+			String[] values = customerLine.split("\t");
+			String stop = "";
 		}
 	}
 }
