@@ -1,5 +1,4 @@
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -11,7 +10,7 @@ public class Job1Driver {
 		
 		Job job = new Job();
 	    job.setJarByClass(Job1Driver.class);
-	    job.setJobName("Assignment 5 -Job 1");
+	    job.setJobName("Assignment 5 - Job 1");
 	    
 	    // The HDFS input and output directories during run time.
 	    FileInputFormat.addInputPath(job, new Path(args[0]));
@@ -23,7 +22,7 @@ public class Job1Driver {
 	    
 	    // Set the output data type classes (K/V pairs).
 	    job.setOutputKeyClass(Text.class);
-	    job.setOutputValueClass(IntWritable.class);
+	    job.setOutputValueClass(CustomWritable.class);
 	    
 	    int code = (job.waitForCompletion(true) ? 0 : 1);
 	    

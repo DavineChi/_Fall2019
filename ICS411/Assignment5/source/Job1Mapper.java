@@ -19,25 +19,25 @@ public class Job1Mapper extends Mapper<LongWritable, Text, Text, CustomWritable>
 		
 		String line = value.toString();
 		
-		String[] valuesArray = line.split(TAB);
+		String[] list = line.split(TAB);
 		
-		int size = valuesArray.length;
+		int listLength = list.length;
 		
-		// If 7 values are found, we know this is Customers data.
-		if (size == 7) {
+		// If 7 values are found, this is Customers data.
+		if (listLength == 7) {
 			
-			customerId = valuesArray[0];
-			zipCode = Integer.parseInt(valuesArray[6]);
+			customerId = list[0];                   // element at index[0] in this input file
+			zipCode = Integer.parseInt(list[6]);    // element at index[6] in this input file
 			
 			word.set(customerId);
 			context.write(word, new CustomWritable(1, zipCode));
 		}
 		
-		// If 4 values are found, we know this is Orders data.
-		else if (size == 4) {
+		// If 4 values are found, this is Orders data.
+		else if (listLength == 4) {
 			
-			customerId = valuesArray[1];
-			productId = Integer.parseInt(valuesArray[2]);
+			customerId = list[1];                   // element at index[1] in this input file
+			productId = Integer.parseInt(list[2]);  // element at index[2] in this input file
 			
 			word.set(customerId);
 			context.write(word, new CustomWritable(2, productId));
