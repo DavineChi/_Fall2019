@@ -1,6 +1,5 @@
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -22,7 +21,7 @@ public class Job2Driver {
 	    job.setReducerClass(Job2Reducer.class);
 	    
 	    // Set the output data type classes (K/V pairs).
-	    job.setOutputKeyClass(Text.class);
+	    job.setOutputKeyClass(CustomWritable.class);
 	    job.setOutputValueClass(IntWritable.class);
 	    
 	    int code = (job.waitForCompletion(true) ? 0 : 1);
