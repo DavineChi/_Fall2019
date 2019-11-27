@@ -21,8 +21,8 @@ public class Job1Driver {
 	    job.setReducerClass(Job1Reducer.class);
 	    
 	    // Set the output data type classes (K/V pairs).
-	    job.setOutputKeyClass(Text.class);
-	    job.setOutputValueClass(CustomWritable.class);
+	    job.setOutputKeyClass(IntWritable.class);
+	    job.setOutputValueClass(IntWritable.class);
 	    
 	    int code = (job.waitForCompletion(true) ? 0 : 1);
 	    
