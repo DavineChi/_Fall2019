@@ -3,13 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class Job1Reducer extends Reducer<Text, CustomWritable, IntWritable, IntWritable> {
+public class Job1Reducer extends Reducer<IntWritable, CustomWritable, IntWritable, IntWritable> {
 	
 	@Override
-	public void reduce(Text key, Iterable<CustomWritable> values, Context context) throws IOException, InterruptedException {
+	public void reduce(IntWritable key, Iterable<CustomWritable> values, Context context) throws IOException, InterruptedException {
 		
 		List<CustomWritable> collection = new ArrayList<CustomWritable>();
 		

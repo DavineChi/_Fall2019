@@ -20,7 +20,11 @@ public class Job1Driver {
 	    job.setMapperClass(Job1Mapper.class);
 	    job.setReducerClass(Job1Reducer.class);
 	    
-	    // Set the output data type classes (K/V pairs).
+	    // Set the Mapper output data type classes (K/V pairs).
+	    job.setMapOutputKeyClass(IntWritable.class);
+	    job.setMapOutputValueClass(CustomWritable.class);
+	    
+	    // Set the Reducer output data type classes (K/V pairs).
 	    job.setOutputKeyClass(IntWritable.class);
 	    job.setOutputValueClass(IntWritable.class);
 	    

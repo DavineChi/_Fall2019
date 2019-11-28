@@ -17,10 +17,20 @@ public class CustomWritable implements WritableComparable<CustomWritable> {
 		
 	}
 	
-	public CustomWritable(int value1, int value2) {
+	public CustomWritable(int first, int second) {
 		
-		first = value1;
-		second = value2;
+		this.first = first;
+		this.second = second;
+	}
+	
+	public int getFirst() {
+		
+		return first;
+	}
+	
+	public int getSecond() {
+		
+		return second;
 	}
 	
 	@Override

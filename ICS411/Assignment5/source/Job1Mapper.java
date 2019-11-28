@@ -1,16 +1,15 @@
 import java.io.IOException;
 
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class Job1Mapper extends Mapper<LongWritable, Text, Text, CustomWritable> {
+public class Job1Mapper extends Mapper<LongWritable, Text, IntWritable, CustomWritable> {
 	
 	private static final String TAB = "\t";
 	
-	private Text word = new Text();
-	
-	private String customerId;
+	private int customerId;
 	private int productId;
 	private int zipCode;
 	
@@ -26,21 +25,19 @@ public class Job1Mapper extends Mapper<LongWritable, Text, Text, CustomWritable>
 		// If 7 values are found, this is Customers data.
 		if (listLength == 7) {
 			
-			customerId = list[0];                   // element at index[0] in this input file
-			zipCode = Integer.parseInt(list[6]);    // element at index[6] in this input file
+			customerId = Integer.parseInt(list[0]);   // element at index[0] in this input file
+			zipCode = Integer.parseInt(list[6]);      // element at index[6] in this input file
 			
-			word.set(customerId);
-			context.write(word, new CustomWritable(1, zipCode));
+			context.write(new IntWritable(customerId), new CustomWritable(1, zipCode));
 		}
 		
 		// If 4 values are found, this is Orders data.
 		else if (listLength == 4) {
 			
-			customerId = list[1];                   // element at index[1] in this input file
-			productId = Integer.parseInt(list[2]);  // element at index[2] in this input file
+			customerId = Integer.parseInt(list[1]);   // element at index[1] in this input file
+			productId = Integer.parseInt(list[2]);    // element at index[2] in this input file
 			
-			word.set(customerId);
-			context.write(word, new CustomWritable(2, productId));
+			context.write(new IntWritable(customerId), new CustomWritable(2, productId));
 		}
 	}
 }
