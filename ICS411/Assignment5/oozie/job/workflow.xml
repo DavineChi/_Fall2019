@@ -21,16 +21,24 @@
                     <value>Job1Mapper</value>
                 </property>
                 <property>
+                    <name>mapreduce.map.output.key.class</name>
+                    <value>org.apache.hadoop.io.IntWritable</value>
+                </property>
+                <property>
+                    <name>mapreduce.map.output.value.class</name>
+                    <value>CustomWritable</value>
+                </property>
+                <property>
+                    <name>mapreduce.job.reduce.class</name>
+                    <value>Job1Reducer</value>
+                </property>
+                <property>
                     <name>mapreduce.job.output.key.class</name>
                     <value>org.apache.hadoop.io.IntWritable</value>
                 </property>
                 <property>
                     <name>mapreduce.job.output.value.class</name>
                     <value>org.apache.hadoop.io.IntWritable</value>
-                </property>
-                <property>
-                    <name>mapreduce.job.reduce.class</name>
-                    <value>Job1Reducer</value>
                 </property>
                 <property>
                     <name>mapreduce.input.fileinputformat.inputdir</name>

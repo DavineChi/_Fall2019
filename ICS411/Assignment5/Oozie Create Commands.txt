@@ -1,7 +1,13 @@
 hadoop fs -mkdir /user/fisher/Assign5/job
 hadoop fs -mkdir /user/fisher/Assign5/job/lib
+hadoop fs -copyFromLocal /home/cloudera/workspace/Assignment5/job.properties /user/fisher/Assign5/job/job.properties
+
+hadoop fs -rm -R /user/fisher/Assign5/job/workflow.xml
 hadoop fs -copyFromLocal /home/cloudera/workspace/Assignment5/workflow.xml /user/fisher/Assign5/job/workflow.xml
+
+hadoop fs -rm -R /user/fisher/Assign5/job/lib/assignment5jobs.jar
 hadoop fs -copyFromLocal /home/cloudera/workspace/Assignment5/assignment5jobs.jar /user/fisher/Assign5/job/lib/assignment5jobs.jar
+
 hadoop fs -ls /user/fisher/Assign5
 hadoop fs -ls /user/fisher/Assign5/job
 hadoop fs -ls /user/fisher/Assign5/job/lib
