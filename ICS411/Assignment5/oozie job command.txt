@@ -1,0 +1,1 @@
+oozie job -oozie http://localhost:7777/oozie -config /home/cloudera/workspace/Assignment5/job.properties -run
